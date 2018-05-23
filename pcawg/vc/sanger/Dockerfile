@@ -1,0 +1,1 @@
+FROM images.sbgenomics.com/bogdang/pcawg-sanger:1.0

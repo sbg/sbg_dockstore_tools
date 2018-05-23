@@ -1,0 +1,25 @@
+{
+    "database": {
+        "class": "File",
+        "path": "testdata/yeast_orfs_all_REV.20060126.short.fasta"
+    },
+    "library": {
+        "class": "File",
+        "path": "testdata/NIST_yeast_IT_2012-04-06_7AA.splib",
+        "location": "testdata/NIST_yeast_IT_2012-04-06_7AA.splib"
+    },
+    "list_path_default_parameters": {
+        "class": "File",
+        "path": "testdata/isb_default_input_kscore.xml"
+    },
+    "raw_input": [
+        {
+            "class": "File",
+            "path": "testdata/OR20080317_S_SILAC-LH_1-1_01.RAW"
+        },
+        {
+            "class": "File",
+            "path": "testdata/OR20080320_S_SILAC-LH_1-1_11.RAW"
+        }
+    ]
+}
