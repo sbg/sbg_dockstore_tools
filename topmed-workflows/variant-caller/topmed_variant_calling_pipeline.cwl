@@ -1,8 +1,13 @@
+#!/usr/bin/env cwl-runner
+
 class: Workflow
 cwlVersion: v1.0
 id: >-
   vladimir_obucina/topmed-freeze-3a-variant-calling-pipeline/topmed-variant-calling-pipeline-cwl1/9
 label: TOPMed Variant Calling Pipeline CWL1
+dct:creator:
+ foaf:name: SevenBridgesGenomics
+ foaf:mbox: "mailto:support@sbgenomics.com"
 inputs:
   - id: reference
     'sbg:fileTypes': FA
