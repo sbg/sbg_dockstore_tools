@@ -5,8 +5,7 @@
     },
     "library": {
         "class": "File",
-        "path": "testdata/NIST_yeast_IT_2012-04-06_7AA.splib",
-        "location": "testdata/NIST_yeast_IT_2012-04-06_7AA.splib"
+        "path": "testdata/NIST_yeast_IT_2012-04-06_7AA.splib"
     },
     "list_path_default_parameters": {
         "class": "File",
