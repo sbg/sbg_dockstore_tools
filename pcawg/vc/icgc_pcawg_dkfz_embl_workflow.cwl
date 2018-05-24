@@ -341,7 +341,7 @@ steps:
     'sbg:y': 370
 requirements: []
 dct:creator:
-  foaf:name: SevenBridgesGenomics
+  foaf:name: Seven Bridges
   foaf:mbox: "mailto:support@sbgenomics.com"
 'sbg:categories':
   - Variant Calling

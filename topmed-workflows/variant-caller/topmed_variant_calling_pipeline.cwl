@@ -6,7 +6,7 @@ id: >-
   vladimir_obucina/topmed-freeze-3a-variant-calling-pipeline/topmed-variant-calling-pipeline-cwl1/9
 label: TOPMed Variant Calling Pipeline CWL1
 dct:creator:
- foaf:name: SevenBridgesGenomics
+ foaf:name: Seven Bridges
  foaf:mbox: "mailto:support@sbgenomics.com"
 inputs:
   - id: reference

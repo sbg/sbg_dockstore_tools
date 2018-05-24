@@ -298,7 +298,7 @@ hints:
   - class: 'sbg:AWSInstanceType'
     value: c4.8xlarge;ebs-gp2;700
 dct:creator:
-  foaf:name: SevenBridgesGenomics
+  foaf:name: Seven Bridges
   foaf:mbox: "mailto:support@sbgenomics.com"
 'sbg:categories':
   - CWL1.0

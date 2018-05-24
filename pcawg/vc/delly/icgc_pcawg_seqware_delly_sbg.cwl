@@ -259,7 +259,7 @@ hints:
     value: c4.2xlarge;ebs-gp2;1024
 stdout: stdout.log
 dct:creator:
-  foaf:name: SevenBridgesGenomics
+  foaf:name: Seven Bridges
   foaf:mbox: "mailto:support@sbgenomics.com"
 'sbg:categories':
   - CWL1.0

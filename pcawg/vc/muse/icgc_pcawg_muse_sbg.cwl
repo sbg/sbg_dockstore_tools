@@ -180,7 +180,7 @@ requirements:
       - '        function common_substring(a,b) { var i = 0; while(a[i] === b[i] && i < a.length) { i = i + 1; } return a.slice(0, i) }; var output_basename = function() { if (inputs.output_file_basename) { return inputs.output_file_basename } else{ arr = [].concat(inputs.reads); base = arr[0].path.replace(/^.*[/]/, '''').split(''.'').slice(0, -1).join(''.''); for(i=0;i<arr.length;i++){ base = common_substring(base, arr[i].path.replace(/^.*[/]/, '''').split(''.'').slice(0, -1).join(''.'')); if (base.length == 0) base = ''PCAWG_Aligned'' } return ''PCAWG.'' + base } }; var updateMetadata = function(file, key, value) { file[''metadata''][key] = value; return file; }; var setMetadata = function(file, metadata) { if (!(''metadata'' in file)) file[''metadata''] = metadata; else { for (var key in metadata) { file[''metadata''][key] = metadata[key]; } } return file }; var inheritMetadata = function(o1, o2) { var commonMetadata = {}; if (!Array.isArray(o2)) { o2 = [o2] } for (var i = 0; i < o2.length; i++) { var example = o2[i][''metadata'']; for (var key in example) { if (i == 0) commonMetadata[key] = example[key]; else { if (!(commonMetadata[key] == example[key])) { delete commonMetadata[key] } } } } if (!Array.isArray(o1)) { o1 = setMetadata(o1, commonMetadata) } else { for (var i = 0; i < o1.length; i++) { o1[i] = setMetadata(o1[i], commonMetadata) } } return o1; };'
 stdout: stdout.log
 dct:creator:
-  foaf:name: SevenBridgesGenomics
+  foaf:name: Seven Bridges
   foaf:mbox: "mailto:support@sbgenomics.com"
 'sbg:categories':
   - CWL1.0

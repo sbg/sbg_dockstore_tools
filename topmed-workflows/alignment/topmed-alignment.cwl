@@ -2,7 +2,7 @@ class: Workflow
 cwlVersion: v1.0
 id: topmed-alignment
 dct:creator:
-  foaf:name: SevenBridgesGenomics
+  foaf:name: Seven Bridges
   foaf:mbox: "mailto:support@sbgenomics.com"
 label: TOPMed Alignment
 $namespaces:

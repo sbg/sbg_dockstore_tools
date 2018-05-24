@@ -4,7 +4,7 @@ class: Workflow
 cwlVersion: v1.0
 id: the_trans_proteomic_pipeline_5_0_0
 dct:creator:
-  foaf:name: SevenBridgesGenomics
+  foaf:name: Seven Bridges
   foaf:mbox: "mailto:support@sbgenomics.com"
 doc: >-
   The Trans-Proteomic Pipeline (TPP) is a suite of software tools used for the

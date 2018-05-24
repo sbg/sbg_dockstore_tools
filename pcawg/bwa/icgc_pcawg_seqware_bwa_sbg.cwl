@@ -4,7 +4,7 @@ class: CommandLineTool
 cwlVersion: v1.0
 id: pcawg_bwa_sbg_modified
 dct:creator:
-  foaf:name: SevenBridgesGenomics
+  foaf:name: Seven Bridges
   foaf:mbox: "mailto:support@sbgenomics.com"
 doc: >-
   The BWA-Mem workflow from the ICGC PanCancer Analysis of Whole Genomes (PCAWG)
