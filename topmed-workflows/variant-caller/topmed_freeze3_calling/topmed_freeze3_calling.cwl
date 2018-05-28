@@ -258,7 +258,7 @@ requirements:
 
           f.write("\n")
 
-          if genome == "hg19":
+          if genome == "GRCh37":
               f.write("our $md5 = \"$refDir/md5/%2s/%2s/%s\";\n")
               f.write("our $ref = \"$refDir/hs37d5.fa\";\n")
               f.write("our $dbsnp = \"$refDir/dbsnp_142.b37.vcf.gz\";\n")
