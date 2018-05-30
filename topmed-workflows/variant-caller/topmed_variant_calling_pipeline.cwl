@@ -90,7 +90,7 @@ steps:
           - reference_genome_1
     out:
       - id: output_index_file
-    run: verifybamid/verifybamid.cwl
+    run: steps/verifybamid/verifybamid.cwl
     label: VerifyBamID_CWL1
     scatter:
       - bam_cram_file
@@ -133,7 +133,7 @@ steps:
       - id: called_variant_sites
       - id: genotypes
       - id: makefile_log
-    run: topmed_freeze3_calling/topmed_freeze3_calling.cwl
+    run: steps/topmed_freeze3_calling/topmed_freeze3_calling.cwl
     label: Topmed_freeze3_CWL1
     'sbg:x': 157.14285278320312
     'sbg:y': -198
