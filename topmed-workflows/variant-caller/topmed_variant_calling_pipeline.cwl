@@ -1,13 +1,8 @@
-#!/usr/bin/env cwl-runner
-
 class: Workflow
 cwlVersion: v1.0
 id: >-
-  vladimir_obucina/topmed-freeze-3a-variant-calling-pipeline/topmed-variant-calling-pipeline-cwl1/9
+  vladimir_obucina/topmed-freeze-3a-variant-calling-pipeline/topmed-variant-calling-pipeline-cwl1/11
 label: TOPMed Variant Calling Pipeline CWL1
-dct:creator:
- foaf:name: Seven Bridges
- foaf:mbox: "mailto:support@sbgenomics.com"
 inputs:
   - id: reference
     'sbg:fileTypes': FA
@@ -54,8 +49,8 @@ inputs:
     type:
       type: enum
       symbols:
-        - hg19
         - hg38
+        - GRCh37
       name: reference_genome
     'sbg:x': -459.2857360839844
     'sbg:y': -385.71429443359375
@@ -64,20 +59,20 @@ outputs:
     outputSource:
       - topmed_freeze3_calling/called_variant_sites
     type: File
-    'sbg:x': 400.1481018066406
-    'sbg:y': -54.76030349731445
+    'sbg:x': 418.68548583984375
+    'sbg:y': -43.3526725769043
   - id: genotypes
     outputSource:
       - topmed_freeze3_calling/genotypes
     type: File
-    'sbg:x': 425.2412109375
-    'sbg:y': -194.8717498779297
+    'sbg:x': 418.1114501953125
+    'sbg:y': -197.72366333007812
   - id: makefile_log
     outputSource:
       - topmed_freeze3_calling/makefile_log
     type: File?
-    'sbg:x': 402.1481018066406
-    'sbg:y': -341.23968505859375
+    'sbg:x': 423.53741455078125
+    'sbg:y': -332.6839599609375
 steps:
   - id: verifybamid_cwl1
     in:
@@ -95,7 +90,7 @@ steps:
           - reference_genome_1
     out:
       - id: output_index_file
-    run: verifybamid.cwl
+    run: steps/verifybamid/verifybamid.cwl
     label: VerifyBamID_CWL1
     scatter:
       - bam_cram_file
@@ -138,76 +133,82 @@ steps:
       - id: called_variant_sites
       - id: genotypes
       - id: makefile_log
-    run: topmed_freeze3_calling.cwl
+    run: steps/topmed_freeze3_calling/topmed_freeze3_calling.cwl
     label: Topmed_freeze3_CWL1
     'sbg:x': 157.14285278320312
     'sbg:y': -198
 requirements:
   - class: ScatterFeatureRequirement
-$namespaces:
-  sbg: 'https://sevenbridges.com'
-'sbg:appVersion':
-  - v1.0
+'sbg:modifiedOn': 1527500740
+'sbg:latestRevision': 11
+'sbg:sbgMaintained': false
+'sbg:validationErrors': []
+'sbg:id': >-
+  vladimir_obucina/topmed-freeze-3a-variant-calling-pipeline/topmed-variant-calling-pipeline-cwl1/11
+'sbg:createdOn': 1526996458
 'sbg:contributors':
   - vladimir_obucina
-'sbg:createdBy': vladimir_obucina
-'sbg:createdOn': 1526996458
-'sbg:id': >-
-  vladimir_obucina/topmed-freeze-3a-variant-calling-pipeline/topmed-variant-calling-pipeline-cwl1/9
-'sbg:image_url': >-
-  https://igor.sbgenomics.com/ns/brood/images/vladimir_obucina/topmed-freeze-3a-variant-calling-pipeline/topmed-variant-calling-pipeline-cwl1/9.png
-'sbg:latestRevision': 9
-'sbg:modifiedBy': vladimir_obucina
-'sbg:modifiedOn': 1527071783
-'sbg:project': vladimir_obucina/topmed-freeze-3a-variant-calling-pipeline
-'sbg:projectName': TOPMed Freeze 3a Variant Calling Pipeline
-'sbg:publisher': sbg
-'sbg:revision': 9
-'sbg:revisionNotes': >-
-  UPDATE: changed VerifyBamID, error was lack od \n sign at the end of each
-  output index file.
 'sbg:revisionsInfo':
-  - 'sbg:modifiedBy': vladimir_obucina
+  - 'sbg:revision': 0
     'sbg:modifiedOn': 1526996458
-    'sbg:revision': 0
+    'sbg:modifiedBy': vladimir_obucina
     'sbg:revisionNotes': null
-  - 'sbg:modifiedBy': vladimir_obucina
+  - 'sbg:revision': 1
     'sbg:modifiedOn': 1526996882
-    'sbg:revision': 1
+    'sbg:modifiedBy': vladimir_obucina
     'sbg:revisionNotes': 'Firste Version with CWL1 tools, scatter on VerifyBAMId is of type none'
-  - 'sbg:modifiedBy': vladimir_obucina
+  - 'sbg:revision': 2
     'sbg:modifiedOn': 1526997137
-    'sbg:revision': 2
+    'sbg:modifiedBy': vladimir_obucina
     'sbg:revisionNotes': Exposed ports
-  - 'sbg:modifiedBy': vladimir_obucina
+  - 'sbg:revision': 3
     'sbg:modifiedOn': 1526997206
-    'sbg:revision': 3
+    'sbg:modifiedBy': vladimir_obucina
     'sbg:revisionNotes': ''
-  - 'sbg:modifiedBy': vladimir_obucina
+  - 'sbg:revision': 4
     'sbg:modifiedOn': 1526997265
-    'sbg:revision': 4
+    'sbg:modifiedBy': vladimir_obucina
     'sbg:revisionNotes': ''
-  - 'sbg:modifiedBy': vladimir_obucina
+  - 'sbg:revision': 5
     'sbg:modifiedOn': 1527001305
-    'sbg:revision': 5
+    'sbg:modifiedBy': vladimir_obucina
     'sbg:revisionNotes': Separated bam and bai inputs for VerifyBAMId and Topmed_freeze3
-  - 'sbg:modifiedBy': vladimir_obucina
+  - 'sbg:revision': 6
     'sbg:modifiedOn': 1527007399
-    'sbg:revision': 6
+    'sbg:modifiedBy': vladimir_obucina
     'sbg:revisionNotes': Added output to VerifyBamID
-  - 'sbg:modifiedBy': vladimir_obucina
+  - 'sbg:revision': 7
     'sbg:modifiedOn': 1527060490
-    'sbg:revision': 7
+    'sbg:modifiedBy': vladimir_obucina
     'sbg:revisionNotes': 'UPDATE: Removed symlinks'
-  - 'sbg:modifiedBy': vladimir_obucina
+  - 'sbg:revision': 8
     'sbg:modifiedOn': 1527060551
-    'sbg:revision': 8
+    'sbg:modifiedBy': vladimir_obucina
     'sbg:revisionNotes': ''
-  - 'sbg:modifiedBy': vladimir_obucina
+  - 'sbg:revision': 9
     'sbg:modifiedOn': 1527071783
-    'sbg:revision': 9
+    'sbg:modifiedBy': vladimir_obucina
     'sbg:revisionNotes': >-
       UPDATE: changed VerifyBamID, error was lack od \n sign at the end of each
       output index file.
-'sbg:sbgMaintained': false
-'sbg:validationErrors': []
+  - 'sbg:revision': 10
+    'sbg:modifiedOn': 1527085565
+    'sbg:modifiedBy': vladimir_obucina
+    'sbg:revisionNotes': Removed index file from output
+  - 'sbg:revision': 11
+    'sbg:modifiedOn': 1527500740
+    'sbg:modifiedBy': vladimir_obucina
+    'sbg:revisionNotes': 'UPDATE: GRCh37 insted of hg19'
+$namespaces:
+  sbg: 'https://sevenbridges.com'
+'sbg:modifiedBy': vladimir_obucina
+'sbg:image_url': >-
+  https://igor.sbgenomics.com/ns/brood/images/vladimir_obucina/topmed-freeze-3a-variant-calling-pipeline/topmed-variant-calling-pipeline-cwl1/11.png
+'sbg:publisher': sbg
+'sbg:projectName': TOPMed Freeze 3a Variant Calling Pipeline
+'sbg:revisionNotes': 'UPDATE: GRCh37 insted of hg19'
+'sbg:appVersion':
+  - v1.0
+'sbg:createdBy': vladimir_obucina
+'sbg:project': vladimir_obucina/topmed-freeze-3a-variant-calling-pipeline
+'sbg:revision': 11

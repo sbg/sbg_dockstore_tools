@@ -1,6 +1,6 @@
 class: CommandLineTool
 cwlVersion: v1.0
-id: vladimir_obucina/topmed-freeze-3a-variant-calling-pipeline/verifybamid_cwl1/6
+id: vladimir_obucina/topmed-freeze-3a-variant-calling-pipeline/verifybamid_cwl1/7
 baseCommand: []
 inputs:
   - format: 'BAI,CRAI'
@@ -40,8 +40,8 @@ inputs:
     type:
       type: enum
       symbols:
-        - hg19
         - hg38
+        - GRCh37
       name: reference_genome
     label: Reference genome
 outputs:
@@ -56,13 +56,6 @@ outputs:
 
         }
     format: INDEX
-doc: >-
-  **VerifyBamID** is a software that verifies whether the reads in particular
-  file match previously known genotypes for an individual (or group of
-  individuals), and checks whether the reads are contaminated as a mixture of
-  two samples. verifyBamID can detect sample contamination and swaps when
-  external genotypes are available. When external genotypes are not available,
-  verifyBamID still robustly detects sample swaps.
 label: VerifyBamID_CWL1
 arguments:
   - position: 0
@@ -71,7 +64,7 @@ arguments:
     shellQuote: false
     valueFrom: |-
       ${
-          if (inputs.reference_genome == 'hg19') {
+          if (inputs.reference_genome == 'GRCh37') {
               var UDPath = "/VerifyBamID/resource/1000g.phase3.100k.b37.vcf.gz.dat.UD"
               var BedPath = "/VerifyBamID/resource/1000g.phase3.100k.b37.vcf.gz.dat.bed"
               var MeanPath = "/VerifyBamID/resource/1000g.phase3.100k.b37.vcf.gz.dat.mu"
@@ -218,10 +211,49 @@ requirements:
             else
                 return files.reverse();
         };
+'sbg:modifiedOn': 1527500604
+'sbg:latestRevision': 7
+'sbg:sbgMaintained': false
+'sbg:validationErrors': []
+'sbg:id': vladimir_obucina/topmed-freeze-3a-variant-calling-pipeline/verifybamid_cwl1/7
+'sbg:createdOn': 1526995337
+'sbg:contributors':
+  - vladimir_obucina
+'sbg:revisionsInfo':
+  - 'sbg:revision': 0
+    'sbg:modifiedOn': 1526995337
+    'sbg:modifiedBy': vladimir_obucina
+    'sbg:revisionNotes': null
+  - 'sbg:revision': 1
+    'sbg:modifiedOn': 1526995452
+    'sbg:modifiedBy': vladimir_obucina
+    'sbg:revisionNotes': First version
+  - 'sbg:revision': 2
+    'sbg:modifiedOn': 1526995574
+    'sbg:modifiedBy': vladimir_obucina
+    'sbg:revisionNotes': After conversion there weren't fyle types in the input ports. Added it
+  - 'sbg:revision': 3
+    'sbg:modifiedOn': 1526996077
+    'sbg:modifiedBy': vladimir_obucina
+    'sbg:revisionNotes': ''
+  - 'sbg:revision': 4
+    'sbg:modifiedOn': 1527013794
+    'sbg:modifiedBy': vladimir_obucina
+    'sbg:revisionNotes': Removed /topmed_freeze3/   from path in middle column
+  - 'sbg:revision': 5
+    'sbg:modifiedOn': 1527069678
+    'sbg:modifiedBy': vladimir_obucina
+    'sbg:revisionNotes': ''
+  - 'sbg:revision': 6
+    'sbg:modifiedOn': 1527071592
+    'sbg:modifiedBy': vladimir_obucina
+    'sbg:revisionNotes': 'UPDATE: changed generating index file, \n was missing at the end of file.'
+  - 'sbg:revision': 7
+    'sbg:modifiedOn': 1527500604
+    'sbg:modifiedBy': vladimir_obucina
+    'sbg:revisionNotes': 'UPDATE: GRCh37 instead of hg19'
 $namespaces:
   sbg: 'https://sevenbridges.com'
-'sbg:appVersion':
-  - v1.0
 'sbg:cmdPreview': >-
   export PATH=$PATH:/VerifyBamID/bin/ && VerifyBamID  --UDPath
   /VerifyBamID/resource/1000g.phase3.100k.b37.vcf.gz.dat.UD  --BedPath
@@ -230,49 +262,14 @@ $namespaces:
   /path/to/reference.ext --BamFile /path/to/bam_file.ext && python make_index.py
   --file bam_file --path /root/topmed_freeze3_calling/bam_file.ext --result
   result.out
-'sbg:contributors':
-  - vladimir_obucina
-'sbg:createdBy': vladimir_obucina
-'sbg:createdOn': 1526995337
-'sbg:id': vladimir_obucina/topmed-freeze-3a-variant-calling-pipeline/verifybamid_cwl1/6
-'sbg:image_url': >-
-  https://igor.sbgenomics.com/ns/brood/images/vladimir_obucina/topmed-freeze-3a-variant-calling-pipeline/verifybamid_cwl1/6.png
-'sbg:latestRevision': 6
 'sbg:modifiedBy': vladimir_obucina
-'sbg:modifiedOn': 1527071592
-'sbg:project': vladimir_obucina/topmed-freeze-3a-variant-calling-pipeline
-'sbg:projectName': TOPMed Freeze 3a Variant Calling Pipeline
+'sbg:image_url': >-
+  https://igor.sbgenomics.com/ns/brood/images/vladimir_obucina/topmed-freeze-3a-variant-calling-pipeline/verifybamid_cwl1/7.png
 'sbg:publisher': sbg
-'sbg:revision': 6
-'sbg:revisionNotes': 'UPDATE: changed generating index file, \n was missing at the end of file.'
-'sbg:revisionsInfo':
-  - 'sbg:modifiedBy': vladimir_obucina
-    'sbg:modifiedOn': 1526995337
-    'sbg:revision': 0
-    'sbg:revisionNotes': null
-  - 'sbg:modifiedBy': vladimir_obucina
-    'sbg:modifiedOn': 1526995452
-    'sbg:revision': 1
-    'sbg:revisionNotes': First version
-  - 'sbg:modifiedBy': vladimir_obucina
-    'sbg:modifiedOn': 1526995574
-    'sbg:revision': 2
-    'sbg:revisionNotes': After conversion there weren't fyle types in the input ports. Added it
-  - 'sbg:modifiedBy': vladimir_obucina
-    'sbg:modifiedOn': 1526996077
-    'sbg:revision': 3
-    'sbg:revisionNotes': ''
-  - 'sbg:modifiedBy': vladimir_obucina
-    'sbg:modifiedOn': 1527013794
-    'sbg:revision': 4
-    'sbg:revisionNotes': Removed /topmed_freeze3/   from path in middle column
-  - 'sbg:modifiedBy': vladimir_obucina
-    'sbg:modifiedOn': 1527069678
-    'sbg:revision': 5
-    'sbg:revisionNotes': ''
-  - 'sbg:modifiedBy': vladimir_obucina
-    'sbg:modifiedOn': 1527071592
-    'sbg:revision': 6
-    'sbg:revisionNotes': 'UPDATE: changed generating index file, \n was missing at the end of file.'
-'sbg:sbgMaintained': false
-'sbg:validationErrors': []
+'sbg:projectName': TOPMed Freeze 3a Variant Calling Pipeline
+'sbg:revisionNotes': 'UPDATE: GRCh37 instead of hg19'
+'sbg:appVersion':
+  - v1.0
+'sbg:createdBy': vladimir_obucina
+'sbg:project': vladimir_obucina/topmed-freeze-3a-variant-calling-pipeline
+'sbg:revision': 7
