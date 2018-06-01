@@ -1,9 +1,6 @@
 class: Workflow
 cwlVersion: v1.0
-id: topmed-alignment
-dct:creator:
-  foaf:name: Seven Bridges
-  foaf:mbox: "mailto:support@sbgenomics.com"
+id: topmed_alignment
 label: TOPMed Alignment
 $namespaces:
   sbg: 'https://sevenbridges.com'
@@ -102,3 +99,6 @@ steps:
     'sbg:y': 8.829793930053711
 requirements:
   - class: ScatterFeatureRequirement
+'dct:creator':
+  'foaf:mbox': 'mailto:support@sbgenomics.com'
+  'foaf:name': Seven Bridges

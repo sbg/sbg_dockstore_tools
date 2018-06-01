@@ -35,8 +35,8 @@ arguments:
     shellQuote: false
     valueFrom: >-
       | bam-ext-mem-sort-manager squeeze --in -.ubam --keepDups --rmTags
-      AS:i,BD:Z,BI:Z,XS:i,MC:Z,MD:Z,NM:i,MQ:i --out -.ubam | samtools sort
-      -l 1 -@ 1 -n
+      AS:i,BD:Z,BI:Z,XS:i,MC:Z,MD:Z,NM:i,MQ:i --out -.ubam | samtools sort -l 1
+      -@ 1 -n
   - position: 2
     prefix: '-T'
     shellQuote: false
@@ -51,9 +51,7 @@ arguments:
   - position: 3
     prefix: ''
     shellQuote: false
-    valueFrom: >-
-      - | samtools fixmate - - | bam-ext-mem-sort-manager bam2fastq --in
-      -.bam
+    valueFrom: '- | samtools fixmate - - | bam-ext-mem-sort-manager bam2fastq --in -.bam'
   - position: 4
     prefix: '--outBase'
     shellQuote: false
@@ -68,9 +66,7 @@ arguments:
   - position: 5
     prefix: ''
     shellQuote: false
-    valueFrom: >-
-      --maxRecordLimitPerFq 20000000 --sortByReadNameOnTheFly --readname
-      --gzip
+    valueFrom: '--maxRecordLimitPerFq 20000000 --sortByReadNameOnTheFly --readname --gzip'
 requirements:
   - class: ShellCommandRequirement
   - class: ResourceRequirement
@@ -122,31 +118,31 @@ requirements:
 hints:
   - class: 'sbg:AWSInstanceType'
     value: c4.2xlarge;ebs-gp2;512
-'sbg:latestRevision': 1
-'sbg:revisionsInfo':
-  - 'sbg:revisionNotes': Copy of marko_zecevic/topmed-align/align/9
-    'sbg:modifiedBy': marko_zecevic
-    'sbg:revision': 0
-    'sbg:modifiedOn': 1525523318
-  - 'sbg:revisionNotes': back to default instance
-    'sbg:modifiedBy': marko_zecevic
-    'sbg:revision': 1
-    'sbg:modifiedOn': 1525548148
-'sbg:publisher': sbg
-'sbg:modifiedOn': 1525548148
-'sbg:id': marko_zecevic/topmed-alignment/topmed-pre-align/1
-'sbg:validationErrors': []
-'sbg:createdBy': marko_zecevic
-'sbg:image_url': >-
-  https://igor.sbgenomics.com/ns/brood/images/marko_zecevic/topmed-alignment/topmed-pre-align/1.png
-'sbg:revision': 1
-'sbg:createdOn': 1525523318
-'sbg:modifiedBy': marko_zecevic
-'sbg:projectName': TOPMed alignment
-'sbg:project': marko_zecevic/topmed-alignment
 'sbg:appVersion':
   - v1.0
-'sbg:revisionNotes': back to default instance
 'sbg:contributors':
   - marko_zecevic
+'sbg:createdBy': marko_zecevic
+'sbg:createdOn': 1525523318
+'sbg:id': marko_zecevic/topmed-alignment/topmed-pre-align/1
+'sbg:image_url': >-
+  https://igor.sbgenomics.com/ns/brood/images/marko_zecevic/topmed-alignment/topmed-pre-align/1.png
+'sbg:latestRevision': 1
+'sbg:modifiedBy': marko_zecevic
+'sbg:modifiedOn': 1525548148
+'sbg:project': marko_zecevic/topmed-alignment
+'sbg:projectName': TOPMed alignment
+'sbg:publisher': sbg
+'sbg:revision': 1
+'sbg:revisionNotes': back to default instance
+'sbg:revisionsInfo':
+  - 'sbg:modifiedBy': marko_zecevic
+    'sbg:modifiedOn': 1525523318
+    'sbg:revision': 0
+    'sbg:revisionNotes': Copy of marko_zecevic/topmed-align/align/9
+  - 'sbg:modifiedBy': marko_zecevic
+    'sbg:modifiedOn': 1525548148
+    'sbg:revision': 1
+    'sbg:revisionNotes': back to default instance
 'sbg:sbgMaintained': false
+'sbg:validationErrors': []
