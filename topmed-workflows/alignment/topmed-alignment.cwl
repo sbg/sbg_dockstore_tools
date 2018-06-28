@@ -38,6 +38,9 @@ inputs:
     label: Reference for input CRAM decompressing
     'sbg:x': -152.35092163085938
     'sbg:y': 139.45030212402344
+  - id: output_name
+    type: string?
+    'sbg:exposed': true
 outputs:
   - id: output
     outputSource:
@@ -52,6 +55,8 @@ steps:
     in:
       - id: input_file
         source: input_file
+      - id: output_name
+        source: output_name
       - id: decomp_ref
         source: decomp_ref
       - id: comp_ref

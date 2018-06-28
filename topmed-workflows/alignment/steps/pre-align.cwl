@@ -14,8 +14,6 @@ inputs:
       shellQuote: false
     label: Input CRAM file
     'sbg:fileTypes': CRAM
-    secondaryFiles:
-      - .crai
   - id: output_name
     type: string?
     label: Output name
@@ -99,7 +97,7 @@ requirements:
     ramMin: 7000
     coresMin: 2
   - class: DockerRequirement
-    dockerPull: images.sbgenomics.com/marko_zecevic/topmed_alignment
+    dockerPull: 'statgen/alignment:1.0.0'
   - class: InlineJavascriptRequirement
     expressionLib:
       - |-
