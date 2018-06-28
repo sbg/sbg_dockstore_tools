@@ -95,7 +95,7 @@ steps:
     'sbg:y': -107
 hints:
   - class: 'sbg:AWSInstanceType'
-    value: c4.4xlarge;ebs-gp2;64
+    value: c4.4xlarge;ebs-gp2;256
 requirements:
   - class: SubworkflowFeatureRequirement
 'dct:creator':
