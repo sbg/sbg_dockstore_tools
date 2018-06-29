@@ -1,7 +1,7 @@
 class: CommandLineTool
 cwlVersion: v1.0
 id: >-
-  vladimir_obucina/topmed-freeze-3a-variant-calling-pipeline/topmed_freeze3_calling/15
+  vladimir_obucina/topmed-freeze-3a-variant-calling-pipeline/topmed_freeze3_calling/18
 baseCommand: []
 inputs:
   - format: 'BAI,CRAI'
@@ -82,6 +82,20 @@ outputs:
     outputBinding:
       glob: makefile.log
     format: LOG
+  - id: vcf_output
+    doc: Output VCF file
+    label: Output VCF file
+    type: 'File[]?'
+    outputBinding:
+      glob: '*vcf.gz'
+    'sbg:fileTypes': GZ
+  - id: vcf_index_output
+    doc: VCF index output file
+    label: Output Index
+    type: 'File[]?'
+    outputBinding:
+      glob: '*.tbi'
+    'sbg:fileTypes': TBI
 label: Topmed_freeze3_CWL1
 arguments:
   - position: 0
@@ -147,10 +161,11 @@ arguments:
           comm += " >> makefile.log"
           comm += " && cd out"
 
-
+          
           comm += " && tar -zcvf genotypes.tar.gz paste"
           comm += " && tar -zcvf called_variant_sites.tar.gz svm"
-          comm += " && mv ../makefile.log genotypes.tar.gz called_variant_sites.tar.gz \"$cwd\""
+          comm += " && mv ../makefile.log genotypes.tar.gz paste/*vcf.gz paste/*.tbi called_variant_sites.tar.gz \"$cwd\""
+          //comm += " && mv ../makefile.log paste/*vcf.gz paste/*.tbi \"$cwd\""
           return comm
       }
 requirements:
@@ -369,92 +384,10 @@ requirements:
 hints:
   - class: 'sbg:useSbgFS'
     value: 'true'
-'sbg:modifiedOn': 1527500690
-'sbg:revision': 15
-'sbg:image_url': >-
-  https://igor.sbgenomics.com/ns/brood/images/vladimir_obucina/topmed-freeze-3a-variant-calling-pipeline/topmed_freeze3_calling/15.png
-'sbg:revisionsInfo':
-  - 'sbg:revision': 0
-    'sbg:modifiedOn': 1525956103
-    'sbg:modifiedBy': mikojicic
-    'sbg:revisionNotes': null
-  - 'sbg:revision': 1
-    'sbg:modifiedOn': 1525956286
-    'sbg:modifiedBy': mikojicic
-    'sbg:revisionNotes': init
-  - 'sbg:revision': 2
-    'sbg:modifiedOn': 1525956409
-    'sbg:modifiedBy': mikojicic
-    'sbg:revisionNotes': name changed
-  - 'sbg:revision': 3
-    'sbg:modifiedOn': 1525957728
-    'sbg:modifiedBy': mikojicic
-    'sbg:revisionNotes': rev 71
-  - 'sbg:revision': 4
-    'sbg:modifiedOn': 1525957765
-    'sbg:modifiedBy': mikojicic
-    'sbg:revisionNotes': delete input
-  - 'sbg:revision': 5
-    'sbg:modifiedOn': 1525959177
-    'sbg:modifiedBy': mikojicic
-    'sbg:revisionNotes': javascript save
-  - 'sbg:revision': 6
-    'sbg:modifiedOn': 1525962377
-    'sbg:modifiedBy': mikojicic
-    'sbg:revisionNotes': use sbgfs
-  - 'sbg:revision': 7
-    'sbg:modifiedOn': 1525963786
-    'sbg:modifiedBy': mikojicic
-    'sbg:revisionNotes': default number of jobs fixed
-  - 'sbg:revision': 8
-    'sbg:modifiedOn': 1526053632
-    'sbg:modifiedBy': vladimir_obucina
-    'sbg:revisionNotes': Removed file requirements
-  - 'sbg:revision': 9
-    'sbg:modifiedOn': 1526995956
-    'sbg:modifiedBy': vladimir_obucina
-    'sbg:revisionNotes': Draft2 revision 98
-  - 'sbg:revision': 10
-    'sbg:modifiedOn': 1526996080
-    'sbg:modifiedBy': vladimir_obucina
-    'sbg:revisionNotes': ''
-  - 'sbg:revision': 11
-    'sbg:modifiedOn': 1527013723
-    'sbg:modifiedBy': vladimir_obucina
-    'sbg:revisionNotes': Removed making symlinks
-  - 'sbg:revision': 12
-    'sbg:modifiedOn': 1527068264
-    'sbg:modifiedBy': vladimir_obucina
-    'sbg:revisionNotes': Added append_gcconfig.py script to create files
-  - 'sbg:revision': 13
-    'sbg:modifiedOn': 1527069675
-    'sbg:modifiedBy': vladimir_obucina
-    'sbg:revisionNotes': ''
-  - 'sbg:revision': 14
-    'sbg:modifiedOn': 1527085513
-    'sbg:modifiedBy': vladimir_obucina
-    'sbg:revisionNotes': Removed Index file from outputs.
-  - 'sbg:revision': 15
-    'sbg:modifiedOn': 1527500690
-    'sbg:modifiedBy': vladimir_obucina
-    'sbg:revisionNotes': 'UPDATE: GRCh37 insted of hg19'
 $namespaces:
   sbg: 'https://sevenbridges.com'
-'sbg:modifiedBy': vladimir_obucina
-'sbg:publisher': sbg
-'sbg:projectName': TOPMed Freeze 3a Variant Calling Pipeline
-'sbg:revisionNotes': 'UPDATE: GRCh37 insted of hg19'
 'sbg:appVersion':
   - v1.0
-'sbg:latestRevision': 15
-'sbg:sbgMaintained': false
-'sbg:id': >-
-  vladimir_obucina/topmed-freeze-3a-variant-calling-pipeline/topmed_freeze3_calling/15
-'sbg:createdOn': 1525956103
-'sbg:contributors':
-  - mikojicic
-  - vladimir_obucina
-'sbg:validationErrors': []
 'sbg:cmdPreview': >-
   cat /path/to/index_files-1.ext /path/to/index_files-2.ext > trio_data.index &&
   ln -sf /path/to/bam_cram_files-1.ext
@@ -482,5 +415,99 @@ $namespaces:
   cd out && tar -zcvf genotypes.tar.gz paste && tar -zcvf
   called_variant_sites.tar.gz svm && mv ../makefile.log genotypes.tar.gz
   called_variant_sites.tar.gz "$cwd"
+'sbg:contributors':
+  - mikojicic
+  - vladimir_obucina
 'sbg:createdBy': mikojicic
+'sbg:createdOn': 1525956103
+'sbg:id': >-
+  vladimir_obucina/topmed-freeze-3a-variant-calling-pipeline/topmed_freeze3_calling/18
+'sbg:image_url': >-
+  https://igor.sbgenomics.com/ns/brood/images/vladimir_obucina/topmed-freeze-3a-variant-calling-pipeline/topmed_freeze3_calling/18.png
+'sbg:latestRevision': 18
+'sbg:modifiedBy': vladimir_obucina
+'sbg:modifiedOn': 1529872391
 'sbg:project': vladimir_obucina/topmed-freeze-3a-variant-calling-pipeline
+'sbg:projectName': TOPMed Freeze 3a Variant Calling Pipeline
+'sbg:publisher': sbg
+'sbg:revision': 18
+'sbg:revisionNotes': ''
+'sbg:revisionsInfo':
+  - 'sbg:modifiedBy': mikojicic
+    'sbg:modifiedOn': 1525956103
+    'sbg:revision': 0
+    'sbg:revisionNotes': null
+  - 'sbg:modifiedBy': mikojicic
+    'sbg:modifiedOn': 1525956286
+    'sbg:revision': 1
+    'sbg:revisionNotes': init
+  - 'sbg:modifiedBy': mikojicic
+    'sbg:modifiedOn': 1525956409
+    'sbg:revision': 2
+    'sbg:revisionNotes': name changed
+  - 'sbg:modifiedBy': mikojicic
+    'sbg:modifiedOn': 1525957728
+    'sbg:revision': 3
+    'sbg:revisionNotes': rev 71
+  - 'sbg:modifiedBy': mikojicic
+    'sbg:modifiedOn': 1525957765
+    'sbg:revision': 4
+    'sbg:revisionNotes': delete input
+  - 'sbg:modifiedBy': mikojicic
+    'sbg:modifiedOn': 1525959177
+    'sbg:revision': 5
+    'sbg:revisionNotes': javascript save
+  - 'sbg:modifiedBy': mikojicic
+    'sbg:modifiedOn': 1525962377
+    'sbg:revision': 6
+    'sbg:revisionNotes': use sbgfs
+  - 'sbg:modifiedBy': mikojicic
+    'sbg:modifiedOn': 1525963786
+    'sbg:revision': 7
+    'sbg:revisionNotes': default number of jobs fixed
+  - 'sbg:modifiedBy': vladimir_obucina
+    'sbg:modifiedOn': 1526053632
+    'sbg:revision': 8
+    'sbg:revisionNotes': Removed file requirements
+  - 'sbg:modifiedBy': vladimir_obucina
+    'sbg:modifiedOn': 1526995956
+    'sbg:revision': 9
+    'sbg:revisionNotes': Draft2 revision 98
+  - 'sbg:modifiedBy': vladimir_obucina
+    'sbg:modifiedOn': 1526996080
+    'sbg:revision': 10
+    'sbg:revisionNotes': ''
+  - 'sbg:modifiedBy': vladimir_obucina
+    'sbg:modifiedOn': 1527013723
+    'sbg:revision': 11
+    'sbg:revisionNotes': Removed making symlinks
+  - 'sbg:modifiedBy': vladimir_obucina
+    'sbg:modifiedOn': 1527068264
+    'sbg:revision': 12
+    'sbg:revisionNotes': Added append_gcconfig.py script to create files
+  - 'sbg:modifiedBy': vladimir_obucina
+    'sbg:modifiedOn': 1527069675
+    'sbg:revision': 13
+    'sbg:revisionNotes': ''
+  - 'sbg:modifiedBy': vladimir_obucina
+    'sbg:modifiedOn': 1527085513
+    'sbg:revision': 14
+    'sbg:revisionNotes': Removed Index file from outputs.
+  - 'sbg:modifiedBy': vladimir_obucina
+    'sbg:modifiedOn': 1527500690
+    'sbg:revision': 15
+    'sbg:revisionNotes': 'UPDATE: GRCh37 insted of hg19'
+  - 'sbg:modifiedBy': vladimir_obucina
+    'sbg:modifiedOn': 1527503975
+    'sbg:revision': 16
+    'sbg:revisionNotes': 'UPDATE: changed append_gcconfig.py script to recognize GRCh37'
+  - 'sbg:modifiedBy': vladimir_obucina
+    'sbg:modifiedOn': 1529858460
+    'sbg:revision': 17
+    'sbg:revisionNotes': 'UPDATE: Added vcf and vcf_index output.'
+  - 'sbg:modifiedBy': vladimir_obucina
+    'sbg:modifiedOn': 1529872391
+    'sbg:revision': 18
+    'sbg:revisionNotes': ''
+'sbg:sbgMaintained': false
+'sbg:validationErrors': []
