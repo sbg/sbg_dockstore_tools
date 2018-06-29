@@ -98,6 +98,9 @@ requirements:
     coresMin: 2
   - class: DockerRequirement
     dockerPull: 'statgen/alignment:1.0.0'
+  - class: InitialWorkDirRequirement
+    listing:
+      - $(inputs.comp_ref)
   - class: InlineJavascriptRequirement
     expressionLib:
       - |-
