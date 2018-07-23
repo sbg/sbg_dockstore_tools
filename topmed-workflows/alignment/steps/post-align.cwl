@@ -64,9 +64,9 @@ arguments:
           while(i<L && a1.charAt(i)=== a2.charAt(i)) i++;
           return a1.substring(0, i);
         }
-        path_list = []
+        var path_list = []
         inputs.alignment_files.forEach(function(f){return path_list.push(f.path.replace(/\\/g,'/').replace( /.*\//, '' ))})
-        common_prefix = sharedStart(path_list)
+        var common_prefix = sharedStart(path_list)
         if (common_prefix.length >0){
           return common_prefix.concat(".recab.cram")
         } else {
@@ -103,8 +103,7 @@ requirements:
   - class: DockerRequirement
     dockerPull: 'statgen/alignment:1.0.0'
   - class: InitialWorkDirRequirement
-    listing:
-      - |-
+    listing: |-
         ${ 
             var out = []
             out.push(inputs.reference)
