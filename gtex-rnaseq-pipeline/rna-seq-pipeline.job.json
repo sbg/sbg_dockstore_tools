@@ -1,0 +1,24 @@
+{
+    "GTF_file": {
+        "class": "File",
+        "path": "test_data/gencode.v19.annotation.patched_contigs.gtf"
+    },
+    "input_cram": {
+        "class": "File",
+        "path": "test_data/GTEX-11XUK-1626-SM-5GU5O.Aligned.sortedByCoord.out.patched.cram"
+    },
+    "output_prefix": null,
+    "reference": {
+        "class": "File",
+        "path": "test_data/Homo_sapiens_assembly19.fasta"
+    },
+    "reference_or_index": {
+        "class": "File",
+        "path": "test_data/genomeDir.tar"
+    },
+    "rsem_reference": {
+        "class": "File",
+        "path": "test_data/Homo_sapiens_assembly19_rsem_reference.tar"
+    },
+    "threads": null
+}
