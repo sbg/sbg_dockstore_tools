@@ -1,1 +1,1 @@
-FROM images.sbgenomics.com/bogdang/pcawg-delly:1
+FROM images.sbgenomics.com/bogdang/pcawg-delly:10072019
